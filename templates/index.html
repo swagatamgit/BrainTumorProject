@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brain Tumor Detection System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f7fc;
+}
+
+nav{
+background:#0f172a;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+}
+
+nav h2{
+color:#38bdf8;
+}
+
+.hero{
+background:linear-gradient(135deg,#2563eb,#1e3a8a);
+color:white;
+padding:80px;
+text-align:center;
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.container{
+width:90%;
+margin:auto;
+}
+
+.cards{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+flex:1;
+min-width:250px;
+text-align:center;
+}
+
+.upload-section{
+background:white;
+margin-top:30px;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+button{
+background:#2563eb;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+background:#ecfeff;
+border-radius:10px;
+}
+
+img{
+margin-top:20px;
+max-width:300px;
+border-radius:10px;
+}.about{
+background:white;
+padding:30px;
+margin-top:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.doctors{
+background:white;
+padding:30px;
+margin-top:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact{
+background:white;
+padding:30px;
+margin-top:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+footer{
+background:#0f172a;
+color:white;
+padding:20px;
+margin-top:40px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Brain Tumor AI</h2>
+<div>Final Year Project</div>
+</nav>
+
+<section class="hero">
+<h1>Brain Tumor Detection Using CNN</h1>
+<p>Artificial Intelligence Powered MRI Classification System</p>
+</section>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h2>Accuracy</h2>
+<h1>89.46%</h1>
+</div>
+
+<div class="card">
+<h2>Classes</h2>
+<h3>4 Categories</h3>
+</div>
+
+<div class="card">
+<h2>Framework</h2>
+<h3>TensorFlow</h3>
+</div>
+
+</div>
+
+<div class="upload-section">
+
+<h2>Upload MRI Image</h2>
+
+<form action="/predict" method="post" enctype="multipart/form-data">
+<input type="text" name="patient_name" placeholder="Patient Name" required>
+
+<br><br>
+
+<input type="number" name="age" placeholder="Age" required>
+
+<br><br>
+
+<select name="gender">
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+
+<br><br>
+<input type="file" name="file" required>
+
+<br><br>
+
+<button type="submit">
+Predict Tumor
+</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+
+<h2>Prediction Result</h2>
+
+<h1>{{ prediction }}</h1>
+
+<h3>Confidence: {{ confidence }}%</h3>
+
+<img src="{{ image_path }}">
+
+</div>
+
+{% endif %}
+
+</div><div class="about">
+
+<h2>About Project</h2>
+
+<p>
+This project uses a Convolutional Neural Network (CNN)
+to classify MRI scans into:
+Glioma, Meningioma, Pituitary Tumor and No Tumor.
+</p>
+
+</div>
+
+<div class="doctors">
+
+<h2>Doctor Consultation</h2>
+
+<p>
+Dr. Amit Sharma - Neuro Surgeon
+</p>
+
+<p>
+Dr. Priya Gupta - Brain Tumor Specialist
+</p>
+
+<button onclick="showDoctor()">
+Contact Doctor
+</button>
+
+</div>
+
+<div class="contact">
+
+<h2>Contact Us</h2>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea rows="5" placeholder="Message"></textarea>
+
+<br><br>
+
+<button onclick="sendMessage()">
+Send Message
+</button>
+
+</div>
+
+</div>
+
+<footer>
+
+Brain Tumor Detection System | B.Tech Final Year Project | 2026
+
+</footer>
+
+<script>
+
+function showDoctor(){
+alert("Doctor Contact: +91 9876543210");
+}
+
+function sendMessage(){
+alert("Message Submitted Successfully");
+}
+
+</script>
+
+</body>
+</html>

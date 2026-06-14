@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Brain Tumor Detection</title>
+</head>
+<body>
+
+<h1>Brain Tumor Detection Using CNN</h1>
+
+<p>Model Accuracy: 89.46%</p>
+
+<form action="/predict" method="post" enctype="multipart/form-data">
+<input type="file" name="file" required>
+<br><br>
+<button type="submit">Predict</button>
+</form>
+
+{% if prediction %}
+<h2>Prediction: {{ prediction }}</h2>
+<h3>Confidence: {{ confidence }}%</h3>
+<img src="{{ image_path }}" width="300">
+{% endif %}
+
+</body>
+</html>
